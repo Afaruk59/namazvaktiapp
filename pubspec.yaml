@@ -1,0 +1,39 @@
+name: namaz_vakti_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+  connectivity_plus: ^6.0.5
+  csv: ^6.0.0
+  flutter:
+    sdk: flutter
+  flutter_compass: ^0.8.0
+  flutter_localization: ^0.2.2
+  geolocator: ^13.0.1
+  google_fonts: ^6.2.1
+  hijri: ^3.0.0
+  http: ^1.2.2
+  intl: ^0.19.0
+  permission_handler: ^11.3.1
+  provider: ^6.1.2
+  shared_preferences: ^2.3.1
+  translator: ^1.0.2
+  url_launcher: ^6.3.0
+  xml: ^6.5.0
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/img/
+    - assets/cities/
