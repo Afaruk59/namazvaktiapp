@@ -4,7 +4,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:namaz_vakti_app/change_settings.dart';
-import 'package:namaz_vakti_app/main.dart';
 import 'package:provider/provider.dart';
 
 class Location extends StatefulWidget {
@@ -237,7 +236,7 @@ class LocationState extends State<Location> {
                   ),
                 ],
               )
-            : Row(
+            : const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FittedBox(
@@ -245,11 +244,11 @@ class LocationState extends State<Location> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.location_on, size: MainApp.currentHeight! < 700.0 ? 20.0 : 22.0),
+                        Icon(Icons.location_on, size: 22.0),
                         Text(
                           'Güncelle',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: MainApp.currentHeight! < 700.0 ? 14.0 : 15.0),
+                          style: TextStyle(fontSize: 15.0),
                         ),
                       ],
                     ),

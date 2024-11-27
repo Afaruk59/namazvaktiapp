@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:namaz_vakti_app/home_page.dart';
 import 'package:namaz_vakti_app/pages/timesPage/location.dart';
@@ -35,19 +34,13 @@ void main() async {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-  static double? currentHeight;
 
   @override
   Widget build(BuildContext context) {
-    MainApp.currentHeight = MediaQuery.of(context).size.height;
     Provider.of<ChangeSettings>(context, listen: false).loadCol();
     Provider.of<ChangeSettings>(context, listen: false).loadThemeFromSharedPref();
     Provider.of<ChangeSettings>(context, listen: false).loadGradFromSharedPref();
     Provider.of<ChangeSettings>(context, listen: false).loadFirstFromSharedPref();
-    Provider.of<ChangeSettings>(context, listen: false).loadLanguage();
-    Provider.of<ChangeSettings>(context).locale == const Locale('ar')
-        ? HijriCalendar.setLocal('ar')
-        : HijriCalendar.setLocal('en');
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -67,11 +60,11 @@ class MainApp extends StatelessWidget {
                 ? Brightness.dark
                 : Brightness.light, // Durum çubuğu simgeleri koyu renk yap
           ),
-          toolbarHeight: currentHeight! < 700 ? 40 : 45,
+          toolbarHeight: 55,
           titleSpacing: 30,
           color: Colors.transparent,
           titleTextStyle: GoogleFonts.ubuntu(
-              fontSize: currentHeight! < 700 ? 22 : 25.0,
+              fontSize: 25.0,
               color: Provider.of<ChangeSettings>(context).isDark == false
                   ? Colors.black87
                   : Colors.white),
@@ -84,6 +77,7 @@ class MainApp extends StatelessWidget {
         cardColor: Provider.of<ChangeSettings>(context).isDark == false
             ? const Color.fromARGB(255, 230, 230, 230)
             : const Color.fromARGB(255, 40, 40, 40),
+        navigationBarTheme: const NavigationBarThemeData(height: 70),
       ),
       initialRoute:
           Provider.of<ChangeSettings>(context, listen: false).isfirst == true ? '/startup' : '/',

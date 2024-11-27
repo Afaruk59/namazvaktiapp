@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namaz_vakti_app/home_page.dart';
 import 'package:namaz_vakti_app/pages/timesPage/location.dart';
-import 'package:namaz_vakti_app/main.dart';
 
 class Startup extends StatelessWidget {
   const Startup({super.key});
@@ -33,7 +32,7 @@ class StartupCard extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         child: Card(
           child: Padding(
-            padding: EdgeInsets.all(MainApp.currentHeight! < 700.0 ? 5.0 : 10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Card(
               color: Theme.of(context).cardColor,
               child: const Column(

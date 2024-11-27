@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:namaz_vakti_app/main.dart';
 import 'package:namaz_vakti_app/time_data.dart';
 import 'package:provider/provider.dart';
 
 class DetailedTimesBtn extends StatelessWidget {
   const DetailedTimesBtn({super.key});
-  static TextStyle style = TextStyle(fontSize: MainApp.currentHeight! < 700.0 ? 17.0 : 18.0);
+  static TextStyle style = const TextStyle(fontSize: 18.0);
 
   static DateTime? _imsak;
   static DateTime? _sabah;
@@ -54,7 +53,7 @@ class DetailedTimesBtn extends StatelessWidget {
             showDragHandle: true,
             scrollControlDisabledMaxHeightRatio: 0.8,
             elevation: 10,
-            isScrollControlled: MainApp.currentHeight! < 700.0 ? true : false,
+            isScrollControlled: false,
             builder: (BuildContext context) {
               return Card(
                 color: Theme.of(context).cardColor,
@@ -69,7 +68,7 @@ class DetailedTimesBtn extends StatelessWidget {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.all(MainApp.currentHeight! < 700.0 ? 5.0 : 10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Row(
                           children: [
                             Expanded(

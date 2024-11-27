@@ -249,7 +249,7 @@ class TimeData extends ChangeSettings {
         preTime = yatsi!;
       }
 
-      if (soontime == imsak2 && now.hour > yatsi!.hour) {
+      if (soontime == imsak2 && now.isAfter(yatsi!)) {
         mainDifference = DateTime(1970, 1, 2, soontime.hour, soontime.minute, soontime.second)
             .difference(preTime);
         difference = soontime.difference(DateTime(1969, 12, 31, now.hour, now.minute, now.second));

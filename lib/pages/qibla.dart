@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
-import 'package:namaz_vakti_app/main.dart';
 import 'package:namaz_vakti_app/change_settings.dart';
 import 'package:namaz_vakti_app/time_data.dart';
 import 'package:provider/provider.dart';
@@ -126,7 +125,7 @@ class _QiblaCardState extends State<QiblaCard> {
       padding: const EdgeInsets.all(5),
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(MainApp.currentHeight! < 700.0 ? 5.0 : 10.0),
+          padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
               Expanded(
@@ -169,10 +168,10 @@ class _QiblaCardState extends State<QiblaCard> {
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(fontWeight: FontWeight.bold),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 60,
                                         child: Divider(
-                                          height: MainApp.currentHeight! < 700.0 ? 5.0 : 15.0,
+                                          height: 15.0,
                                         ),
                                       ),
                                       Text(

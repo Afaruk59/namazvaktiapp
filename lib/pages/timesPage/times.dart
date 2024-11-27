@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:namaz_vakti_app/pages/timesPage/detailed_times.dart';
 import 'package:namaz_vakti_app/pages/timesPage/location.dart';
-import 'package:namaz_vakti_app/main.dart';
 import 'package:namaz_vakti_app/change_settings.dart';
 import 'package:namaz_vakti_app/time_data.dart';
 import 'package:provider/provider.dart';
@@ -55,9 +54,7 @@ class _TimesBodyState extends State<TimesBody> {
   @override
   void initState() {
     super.initState();
-    miladi =
-        DateFormat('dd MMMM yyyy', Provider.of<ChangeSettings>(context, listen: false).langCode)
-            .format(DateTime.now());
+    miladi = DateFormat('dd MMMM yyyy', 'tr').format(DateTime.now());
     hicri = HijriCalendar.fromDate(DateTime.now()).toFormat('dd MMMM yy');
     Provider.of<TimeData>(context, listen: false).changeTime(miladi);
   }
@@ -65,11 +62,11 @@ class _TimesBodyState extends State<TimesBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(MainApp.currentHeight! < 700.0 ? 0.0 : 5.0),
+      padding: const EdgeInsets.all(5.0),
       child: Column(
         children: [
           Expanded(
-            flex: MainApp.currentHeight! < 700.0 ? 6 : 5,
+            flex: 5,
             child: Row(
               children: [
                 Expanded(
@@ -102,10 +99,7 @@ class _TimesBodyState extends State<TimesBody> {
                                           Provider.of<TimeData>(context, listen: false)
                                               .switchClock(true);
                                         }
-                                        miladi = DateFormat(
-                                                'dd MMMM yyyy',
-                                                Provider.of<ChangeSettings>(context, listen: false)
-                                                    .langCode)
+                                        miladi = DateFormat('dd MMMM yyyy', 'tr')
                                             .format(DateTime.now().add(Duration(days: count)));
                                         hicri = HijriCalendar.fromDate(
                                                 DateTime.now().add(Duration(days: count)))
@@ -122,9 +116,9 @@ class _TimesBodyState extends State<TimesBody> {
                                         fit: BoxFit.scaleDown,
                                         child: Text(
                                           miladi,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: MainApp.currentHeight! < 700.0 ? 13 : 15,
+                                            fontSize: 15,
                                           ),
                                         ),
                                       ),
@@ -150,13 +144,8 @@ class _TimesBodyState extends State<TimesBody> {
                                                 Provider.of<TimeData>(context, listen: false)
                                                     .switchClock(true);
                                               }
-                                              miladi = DateFormat(
-                                                      'dd MMMM yyyy',
-                                                      Provider.of<ChangeSettings>(context,
-                                                              listen: false)
-                                                          .langCode)
-                                                  .format(
-                                                      DateTime.now().add(Duration(days: count)));
+                                              miladi = DateFormat('dd MMMM yyyy', 'tr').format(
+                                                  DateTime.now().add(Duration(days: count)));
                                               hicri = HijriCalendar.fromDate(
                                                       DateTime.now().add(Duration(days: count)))
                                                   .toFormat('dd MMMM yy');
@@ -192,13 +181,8 @@ class _TimesBodyState extends State<TimesBody> {
                                                 Provider.of<TimeData>(context, listen: false)
                                                     .switchClock(true);
                                               }
-                                              miladi = DateFormat(
-                                                      'dd MMMM yyyy',
-                                                      Provider.of<ChangeSettings>(context,
-                                                              listen: false)
-                                                          .langCode)
-                                                  .format(
-                                                      DateTime.now().add(Duration(days: count)));
+                                              miladi = DateFormat('dd MMMM yyyy', 'tr').format(
+                                                  DateTime.now().add(Duration(days: count)));
                                               hicri = HijriCalendar.fromDate(
                                                       DateTime.now().add(Duration(days: count)))
                                                   .toFormat('dd MMMM yy');
@@ -230,9 +214,9 @@ class _TimesBodyState extends State<TimesBody> {
                                 child: Text(
                                   textAlign: TextAlign.center,
                                   hicri,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: MainApp.currentHeight! < 700.0 ? 13 : 15,
+                                    fontSize: 15,
                                   ),
                                 ),
                               ),
@@ -263,13 +247,13 @@ class _TimesBodyState extends State<TimesBody> {
               ],
             ),
           ),
-          Expanded(
+          const Expanded(
             flex: 11,
             child: Card(
               child: Center(
                 child: Padding(
-                  padding: EdgeInsets.all(MainApp.currentHeight! < 700.0 ? 5.0 : 10.0),
-                  child: const Stack(
+                  padding: EdgeInsets.all(10.0),
+                  child: Stack(
                     children: [
                       PrayerTimesPage(),
                       DetailedTimesBtn(),
@@ -305,27 +289,25 @@ class _CityNameCardState extends State<CityNameCard> {
     Provider.of<TimeData>(context).cityState = ChangeSettings.cityState;
     Provider.of<TimeData>(context).city = ChangeSettings.cityName;
     return Padding(
-      padding: EdgeInsets.all(MainApp.currentHeight! < 700.0 ? 5.0 : 10.0),
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             '${Provider.of<TimeData>(context).cityState}',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: MainApp.currentHeight! < 700.0 ? 15.0 : 18.0),
+            style: const TextStyle(fontSize: 18.0),
           ),
-          SizedBox(
-            width: MainApp.currentHeight! < 700.0 ? 70.0 : 100.0,
+          const SizedBox(
+            width: 100.0,
             child: Divider(
-              height: MainApp.currentHeight! < 700.0 ? 10.0 : 20.0,
+              height: 20.0,
             ),
           ),
           Text(
             '$cityName',
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: MainApp.currentHeight! < 700.0 ? 16.0 : 18.0,
-                fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
           ),
         ],
       ),
@@ -365,7 +347,7 @@ class MainTimes extends StatelessWidget {
     super.key,
   });
 
-  static TextStyle timeStyle = TextStyle(fontSize: MainApp.currentHeight! < 700.0 ? 18.0 : 20.0);
+  static TextStyle timeStyle = const TextStyle(fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
@@ -545,9 +527,7 @@ class _ClockState extends State<Clock> {
             icon: const Icon(Icons.replay_outlined),
           )
         : Padding(
-            padding: MainApp.currentHeight! < 700.0
-                ? const EdgeInsets.fromLTRB(60, 0, 60, 0)
-                : const EdgeInsets.fromLTRB(60, 5, 60, 5),
+            padding: const EdgeInsets.fromLTRB(60, 5, 60, 5),
             child: SizedBox(
               height: 55,
               child: Stack(
@@ -585,15 +565,13 @@ class _ClockState extends State<Clock> {
                           children: [
                             Text(
                               _prayList[Provider.of<TimeData>(context).pray],
-                              style:
-                                  TextStyle(fontSize: MainApp.currentHeight! < 700.0 ? 15.0 : 17.0),
+                              style: const TextStyle(fontSize: 17.0),
                             ),
                             Provider.of<TimeData>(context).imsak != null
                                 ? Text(
                                     '${(Provider.of<TimeData>(context).difference.inHours).toString().padLeft(2, '0')} : ${(Provider.of<TimeData>(context).difference.inMinutes % 60).toString().padLeft(2, '0')} : ${(Provider.of<TimeData>(context).difference.inSeconds % 60).toString().padLeft(2, '0')}',
-                                    style: TextStyle(
-                                        fontSize: MainApp.currentHeight! < 700.0 ? 15.0 : 17.0,
-                                        fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                        fontSize: 17.0, fontWeight: FontWeight.bold),
                                   )
                                 : const Text('0'),
                           ],

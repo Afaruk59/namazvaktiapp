@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:namaz_vakti_app/main.dart';
 import 'package:provider/provider.dart';
 import 'package:namaz_vakti_app/change_settings.dart';
 
@@ -18,19 +17,17 @@ class Settings extends StatelessWidget {
 }
 
 class SettingsCard extends StatelessWidget {
-  static Locale? preLang;
   const SettingsCard({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    preLang = Provider.of<ChangeSettings>(context).locale;
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(MainApp.currentHeight! < 700.0 ? 5.0 : 15.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
               Card(
