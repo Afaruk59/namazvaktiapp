@@ -14,8 +14,6 @@ import 'package:namaz_vakti_app/change_settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await initService();
-  //await requestNotificationPermission();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
