@@ -4,6 +4,7 @@ import 'package:xml/xml.dart' as xml;
 import 'package:http/http.dart' as http;
 
 class TimeData extends ChangeSettings {
+  //VAKİTLER
   DateTime? yatsi2;
   DateTime? imsak2;
   DateTime? imsak;
@@ -23,6 +24,7 @@ class TimeData extends ChangeSettings {
   String? city;
   String? cityState;
 
+  //ZAMAN ELEMANLARI
   List<Map<String, String>> prayerTimes = [];
   Map<String, String>? selectedDayTimes;
   DateTime? selectedDate;
@@ -42,6 +44,7 @@ class TimeData extends ChangeSettings {
 
   String miladi = DateFormat('dd MMMM yyyy').format(DateTime.now());
 
+  //XML İÇİNDEN BELİRLİ TARİHİ SEÇEN FONKSİYON
   void selectDate(DateTime time) {
     final DateTime picked = time;
 
@@ -54,6 +57,7 @@ class TimeData extends ChangeSettings {
     notifyListeners();
   }
 
+  //XMLDEN BELİRLİ TARİHTEKİ VAKİTLERİ ALAN FONKSİYON
   Future<void> loadPrayerTimes(DateTime time) async {
     String url =
         'https://www.namazvakti.com/XML.php?cityID=${ChangeSettings.cityID}'; // Çevrimiçi XML dosyasının URL'si
@@ -179,6 +183,8 @@ class TimeData extends ChangeSettings {
     }
   }
 
+  //VAKİTLER YÜKLENİRKEN YÜKLEME EKRANI ÇIKARAN FONKSİYONALR
+
   void switchClock(bool value) {
     if (value) {
       isEnabled = true;
@@ -197,6 +203,7 @@ class TimeData extends ChangeSettings {
     notifyListeners();
   }
 
+  //KALAN VAKTİ HESAPLAYAN GERİ SAYMA FONKSİYONU
   void updateTime() {
     DateTime now = DateTime.now();
     clock = DateFormat('HH:mm:ss').format(now);

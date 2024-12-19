@@ -36,6 +36,7 @@ class _TimesBodyState extends State<TimesBody> {
   int count = 0;
   DateTime customDate = DateTime.now();
 
+//DATE PICKER İLE İSTENİLEN TARİHİ SEÇME
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -51,6 +52,7 @@ class _TimesBodyState extends State<TimesBody> {
     }
   }
 
+  //AÇILIŞTA İLK OLARAK O GÜNÜN TARİHİNİ ALMA
   @override
   void initState() {
     super.initState();
@@ -77,6 +79,7 @@ class _TimesBodyState extends State<TimesBody> {
                           child: Center(
                             child: Stack(
                               children: [
+                                //TARİHİ SEÇEN BUTON
                                 Center(
                                   child: TextButton(
                                     style: TextButton.styleFrom(
@@ -131,6 +134,7 @@ class _TimesBodyState extends State<TimesBody> {
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
+                                        //BİR ÖNCEKİ GÜNE GEÇME
                                         IconButton(
                                           onPressed: () {
                                             Provider.of<TimeData>(context, listen: false)
@@ -168,6 +172,7 @@ class _TimesBodyState extends State<TimesBody> {
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
+                                        //BİR SONRAKİ GUNE GEÇME
                                         IconButton(
                                           onPressed: () {
                                             Provider.of<TimeData>(context, listen: false)
@@ -204,6 +209,7 @@ class _TimesBodyState extends State<TimesBody> {
                           ),
                         ),
                       ),
+                      //HİCRİ TAKVİM
                       Expanded(
                         child: Card(
                           child: Center(
@@ -224,6 +230,7 @@ class _TimesBodyState extends State<TimesBody> {
                           ),
                         ),
                       ),
+                      //KONUM ARAMA BUTONU
                       const Expanded(
                         child: Card(
                           child: Center(
@@ -237,6 +244,7 @@ class _TimesBodyState extends State<TimesBody> {
                     ],
                   ),
                 ),
+                //KONUM İSMİ YAZAN KISIM
                 const Expanded(
                   child: Card(
                     child: Center(
@@ -247,6 +255,7 @@ class _TimesBodyState extends State<TimesBody> {
               ],
             ),
           ),
+          //VAKİTLERİN OLDUĞU KISIM
           const Expanded(
             flex: 11,
             child: Card(
@@ -269,6 +278,7 @@ class _TimesBodyState extends State<TimesBody> {
   }
 }
 
+//AYARLARDAN KONUM İSMİ BİLGİSİNİ ALIR VE EKRANA YAZAR
 class CityNameCard extends StatefulWidget {
   const CityNameCard({super.key});
 
@@ -315,6 +325,7 @@ class _CityNameCardState extends State<CityNameCard> {
   }
 }
 
+//VAKİTLERİN OLDUĞU KART
 class PrayerTimesPage extends StatefulWidget {
   const PrayerTimesPage({super.key});
 
@@ -342,6 +353,7 @@ class PrayerTimesPageState extends State<PrayerTimesPage> {
   }
 }
 
+//ANA VAKİTLER (TİMEDATA CLASSINDAN ÇEKER)
 class MainTimes extends StatelessWidget {
   const MainTimes({
     super.key,
@@ -472,7 +484,7 @@ class MainTimes extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
+//GERİ SAYAN KISIM (TİMEDATA CLASSINDAKİ UPDATETİME FONKSİYONUNU KULLANIR)
 class Clock extends StatefulWidget {
   const Clock({super.key});
 

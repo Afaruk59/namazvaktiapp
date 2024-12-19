@@ -17,6 +17,8 @@ void main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
+  //KAYDEDİLMİŞ KONUMU YÜKLEME
   await ChangeSettings().createSharedPrefObject();
   ChangeSettings().loadLocalFromSharedPref();
 
@@ -35,11 +37,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //GÖRSEL AYARLARINI YÜKLEME
     Provider.of<ChangeSettings>(context, listen: false).loadCol();
     Provider.of<ChangeSettings>(context, listen: false).loadThemeFromSharedPref();
     Provider.of<ChangeSettings>(context, listen: false).loadGradFromSharedPref();
     Provider.of<ChangeSettings>(context, listen: false).loadFirstFromSharedPref();
     return MaterialApp(
+      //GENEL TEMA AYARLARI
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Provider.of<ChangeSettings>(context).gradient == true
@@ -77,8 +81,12 @@ class MainApp extends StatelessWidget {
             : const Color.fromARGB(255, 40, 40, 40),
         navigationBarTheme: const NavigationBarThemeData(height: 70),
       ),
+
+      //BAŞLANGIÇ SAYFASI
       initialRoute:
           Provider.of<ChangeSettings>(context, listen: false).isfirst == true ? '/startup' : '/',
+
+      //SAYFALARA VERİLEN İSİMLER
       routes: {
         '/': (context) => ChangeNotifierProvider<TimeData>(
               create: (context) => TimeData(),

@@ -35,11 +35,16 @@ class StartupCard extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Card(
               color: Theme.of(context).cardColor,
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
+                  Image.asset(
+                    'assets/img/logo.png',
+                    height: 250,
+                  ),
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 50.0),
+                    //KONUMU BULAN BUTON
                     child: Location(),
                   ),
                 ],

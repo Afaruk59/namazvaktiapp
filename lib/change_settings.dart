@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ChangeSettings with ChangeNotifier {
+  //AYARLARI TANIMLAMA
   static late SharedPreferences _settings;
 
   bool isDark = false;
@@ -13,6 +14,10 @@ class ChangeSettings with ChangeNotifier {
   static String? cityState;
 
   bool isfirst = true;
+
+  //AYARLARI DEĞİŞTİREN FONKSİYONLAR
+
+  //VISUAL SETTINGS
 
   void toggleGrad() {
     gradient = !gradient;

@@ -30,6 +30,7 @@ class SettingsCard extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
+              //KOYU TEMA AYARI
               Card(
                 color: Theme.of(context).cardColor,
                 child: Padding(
@@ -42,6 +43,7 @@ class SettingsCard extends StatelessWidget {
                   ),
                 ),
               ),
+              //ARKAPLAN AYARI
               Card(
                 color: Theme.of(context).cardColor,
                 child: Padding(
@@ -54,6 +56,7 @@ class SettingsCard extends StatelessWidget {
                   ),
                 ),
               ),
+              //RENK AYARI
               Card(
                 color: Theme.of(context).cardColor,
                 child: Padding(
@@ -137,6 +140,7 @@ class SettingsCard extends StatelessWidget {
   }
 }
 
+//RENK SEÇME MENÜSÜNDEKİ RENKLER
 class ColorCircle extends StatelessWidget {
   const ColorCircle({super.key, required this.col});
   final MaterialColor col;

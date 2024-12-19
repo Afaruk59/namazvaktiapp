@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:namaz_vakti_app/time_data.dart';
 import 'package:provider/provider.dart';
 
+//DETAYLI VAKİTLERİ GÖSTEREN BUTON
 class DetailedTimesBtn extends StatelessWidget {
   const DetailedTimesBtn({super.key});
   static TextStyle style = const TextStyle(fontSize: 18.0);
@@ -47,6 +48,7 @@ class DetailedTimesBtn extends StatelessWidget {
         iconSize: 25,
         icon: const Icon(Icons.menu),
         onPressed: () {
+          //VAKİTLERİ GOSTEREN BOTTOM SHEET
           showModalBottomSheet(
             backgroundColor: Theme.of(context).cardTheme.color,
             context: context,

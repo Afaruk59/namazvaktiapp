@@ -46,9 +46,9 @@ class _QiblaCardState extends State<QiblaCard> {
     });
   }
 
+//XMLDEN KIBLE VERİSİNİ ALMA
   Future<void> loadTarget() async {
-    String url =
-        'https://www.namazvakti.com/XML.php?cityID=${ChangeSettings.cityID}'; // Çevrimiçi XML dosyasının URL'si
+    String url = 'https://www.namazvakti.com/XML.php?cityID=${ChangeSettings.cityID}';
 
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
@@ -64,6 +64,7 @@ class _QiblaCardState extends State<QiblaCard> {
     }
   }
 
+//TELEFON PUSULASINA GORE YON DEĞİŞTİRME
   Widget _buildCompass() {
     if (_direction == null) {
       return const Text('Yön verisi bekleniyor...');
@@ -106,6 +107,7 @@ class _QiblaCardState extends State<QiblaCard> {
     );
   }
 
+  //BELİRLİ ARALIKTA DOĞRU YON OLDUĞUNU BİLDİREN FONKSİYON
   Widget _buildDirectionText() {
     if (_direction! < _target! + 3 && _direction! > _target! - 3) {
       return SizedBox(
@@ -152,11 +154,10 @@ class _QiblaCardState extends State<QiblaCard> {
                                 child: Card(
                                   shape: RoundedRectangleBorder(
                                     side: const BorderSide(
-                                      color: Colors.grey, // Kenar rengini belirleyin
-                                      width: 1.0, // Kenar kalınlığını belirleyin
+                                      color: Colors.grey,
+                                      width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Kenarların yuvarlaklığını belirleyin
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   color: Theme.of(context).cardColor,
                                   child: Center(
@@ -185,11 +186,10 @@ class _QiblaCardState extends State<QiblaCard> {
                                 child: Card(
                                   shape: RoundedRectangleBorder(
                                     side: const BorderSide(
-                                      color: Colors.grey, // Kenar rengini belirleyin
-                                      width: 1.0, // Kenar kalınlığını belirleyin
+                                      color: Colors.grey,
+                                      width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Kenarların yuvarlaklığını belirleyin
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   color: Theme.of(context).cardColor,
                                   child: Center(

@@ -7,6 +7,8 @@ import 'package:namaz_vakti_app/pages/timesPage/times.dart';
 import 'package:provider/provider.dart';
 import 'package:namaz_vakti_app/change_settings.dart';
 
+//GEÇİŞLİ ARKAPLAN WİDGETİ
+
 class GradientBack extends StatelessWidget {
   const GradientBack({super.key, required this.child});
   final Widget child;
@@ -47,6 +49,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final PageController _pageController = PageController();
 
+  //BAŞLANGIÇTA WİFİYİ KONTROL EDER
   @override
   void initState() {
     super.initState();
@@ -119,6 +122,7 @@ class _HomePageState extends State<HomePage> {
     return GradientBack(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        //SAYFALARIN KAYRIRILMASINI SAĞLAYAN WİDGET
         body: PageView(
           controller: _pageController,
           onPageChanged: (index) {
@@ -144,6 +148,7 @@ class _HomePageState extends State<HomePage> {
             _pageController.animateToPage(index,
                 duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
           },
+          //NAVIGATION BAR ELEMANLARI
           destinations: const <Widget>[
             NavigationDestination(
               selectedIcon: Icon(Icons.schedule),

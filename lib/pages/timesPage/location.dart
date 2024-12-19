@@ -32,11 +32,11 @@ class LocationState extends State<Location> {
     return R * c;
   }
 
-// Dereceyi radyana çeviren yardımcı fonksiyon
   double _toRadians(double degree) {
     return degree * pi / 180;
   }
 
+  //KONUM ERİŞİMİNİ VE İZNİ KONTROL EDEN FONKSİYON
   Future<void> getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -166,6 +166,7 @@ class LocationState extends State<Location> {
     }
   }
 
+//KONUM VERİSİ ALINDIKTAN SONRA CSV DOSYASINDAN EN YAKIN NOKTAYI ÖLÇEREK KONUMU BULAN FONKSİYON (YUKARIDAKİ MATEMATİKSEL FONKSİYONLARI KULLANIYOR)
   Future<void> findCity() async {
     final String csvData = await rootBundle.loadString("assets/cities/cities.csv");
 
