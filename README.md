@@ -1,97 +1,74 @@
-Namaz Vakti Uygulaması
+#Namaz Vakti Uygulaması
 
-Genel Bakış
+Namaz Vakti Uygulaması, kullanıcıların günlük namaz vakitlerini takip etmelerine, kıble yönünü bulmalarına ve özelleştirilebilir ayarlarla uygulamayı kişisel tercihlerine göre kullanmalarına olanak tanıyan, Flutter tabanlı bir mobil uygulamadır.
 
-Namaz Vakti Uygulaması, kullanıcılara namaz vakitlerini, kıble yönünü ve diğer önemli dini bilgileri sunan bir Flutter tabanlı mobil uygulamadır. Kullanıcı dostu arayüzü ve özelleştirilebilir tema seçenekleriyle kolay kullanım sağlar.
+#Genel Bakış
+Bu uygulama, modern bir kullanıcı arayüzü ve kolay kullanım sağlayan özelliklerle donatılmıştır. Namaz Vakti Uygulaması, kullanıcıların bulunduğu konuma özel olarak namaz vakitlerini güncel bir şekilde sunar ve ibadetlerini kolaylaştırmak için ek araçlar sağlar.
 
-Özellikler
+#Özellikler
 
-Namaz Vakitleri: Güncel namaz vakitlerini gösterir.
+Namaz Vakitleri: Güncel namaz vakitlerini görüntüler ve belirli bir tarih için geçmiş ve gelecekteki vakitlere erişim sağlar.
+Kıble Yönü: Kullanıcı cihazının sensörlerini kullanarak kıble yönünü belirler.
+Tema Seçenekleri: Açık ve koyu tema arasında geçiş yapabilme.
+Geçişli Arka Plan: Kullanıcı arayüzünde arka plan geçiş efektini etkinleştirme veya devre dışı bırakma.
+Şehir Konumu: Kullanıcının bulunduğu şehir bilgisini otomatik olarak algılar veya manuel olarak değiştirme seçeneği sunar.
 
-Kıble Yönü: Kıble yönünü tespit ederek kullanıcıya yönlendirme sağlar.
-
-Tema Seçenekleri: Koyu ve açık tema arasında geçiş yapma.
-
-Geçişli Arka Plan: Arka plan geçiş efektini etkinleştirme veya devre dışı bırakma.
-
-Şehir Konumu: Kullanıcının bulunduğu şehir bilgilerini otomatik olarak algılama veya manuel olarak güncelleme.
 
 Kurulum
-
 Gereksinimler
-
 Flutter SDK (v3.0.0 veya üzeri)
-
 Android Studio veya Visual Studio Code
-
 Android/iOS cihaz ya da emülatör
 
 Adımlar
 
-Projeyi klonlayın:
-
+Projeyi Klonlayın:
 git clone <repository-link>
 
-Proje dizinine gidin:
-
+Proje Dizinine Geçin:
 cd namaz-vakti-app
 
-Gerekli bağımlılıkları yükleyin:
-
+Gerekli Bağımlılıkları Yükleyin:
 flutter pub get
 
-Uygulamayı çalıştırın:
-
-flutter run
+Uygulamayı Çalıştırın:
 
 Kullanım
 
 Başlangıç
 
-Uygulamayı açtığınızda, "Hoşgeldiniz" ekranı sizi karşılar. Buradan konumunuzu belirleyebilir ve başlangıç ayarlarınızı yapabilirsiniz.
+Uygulamayı açtığınızda sizi "Hoşgeldiniz" ekranı karşılar. Burada konum bilgilerinizi ayarlayabilir ve başlangıç seçeneklerinizi yapılandırabilirsiniz.
 
 Namaz Vakitleri
-
-Ana ekran üzerinden güncel namaz vakitlerini takip edebilirsiniz.
-
-Tarih seçerek farklı günlerin namaz vakitlerine ulaşabilirsiniz.
+Ana ekran üzerinden bulunduğunuz konuma göre namaz vakitlerini takip edebilirsiniz.
+Tarih seçerek geçmiş veya gelecekteki namaz vakitlerini görüntüleyebilirsiniz.
 
 Kıble Yönü
 
-"Kıble" sekmesine giderek kıble yönünüzü bulabilirsiniz.
+Kıble sekmesinden cihaz pusulası yardımıyla kıble yönünü bulabilirsiniz.
 
 Ayarlar
 
-Uygulama temasını (koyu/açık) ve arka plan geçiş efektlerini ayarlayabilirsiniz.
-
-Şehir bilgilerinizi güncelleyebilirsiniz.
+Tema seçeneklerini (koyu/açık) ve arka plan geçiş efektlerini özelleştirebilirsiniz.
+Şehir bilgilerinizi güncelleyerek doğru namaz vakitlerine erişebilirsiniz.
 
 Yapı
 
-Uygulama şu temel modüllerden oluşur:
+Uygulama aşağıdaki ana dosya ve modüllerden oluşur:
 
-main.dart: Uygulamanın başlangıç noktası.
-
-home_page.dart: Ana ekran tasarımı ve gezinme işlemleri.
-
-settings.dart: Kullanıcı ayarlarının yönetildiği ekran.
-
+main.dart: Uygulamanın giriş noktası.
+home_page.dart: Ana ekran ve gezinme işlemleri.
+settings.dart: Kullanıcı ayarlarını yapılandırma ekranı.
 qibla.dart: Kıble yönü hesaplama ve görselleştirme modülü.
+time_data.dart: Namaz vakitlerini yönetmek ve işlemek için kullanılan veri sınıfı.
+location.dart: Kullanıcı konum bilgilerini işleyen modül.
 
-time_data.dart: Namaz vakitleri verilerinin yönetimi ve işlenmesi.
 
-location.dart: Kullanıcının konum bilgilerini işleme ve güncelleme.
+Kullanılan Bağımlılıklar
 
-Bağımlılıklar
-
-provider: Durum yönetimi için.
-
-shared_preferences: Kullanıcı ayarlarını yerel olarak saklamak için.
-
-connectivity_plus: İnternet bağlantı kontrolü için.
-
+provider: Durum yönetimi.
+shared_preferences: Kullanıcı ayarlarının yerel cihazda depolanması.
+connectivity_plus: İnternet bağlantı durumunu kontrol etmek için.
 geolocator: Kullanıcı konumunu almak için.
-
-intl: Tarih ve saat formatlama için.
-
-hijri: Hicri takvim hesaplamaları için.
+intl: Tarih ve saat formatlama.
+hijri: Hicri takvim hesaplamaları.
