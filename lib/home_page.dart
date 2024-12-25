@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:namaz_vakti_app/pages/qibla.dart';
 import 'package:namaz_vakti_app/pages/settings.dart';
@@ -45,77 +44,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Timer? timer;
-  static bool alertOpen = false;
   int _currentIndex = 0;
   final PageController _pageController = PageController();
-
-  //BAŞLANGIÇTA WİFİYİ KONTROL EDER
-  @override
-  void initState() {
-    super.initState();
-    _checkWifi();
-  }
-
-  void _checkWifi() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult.contains(ConnectivityResult.none)) {
-      if (alertOpen == false) {
-        _showWifiAlert();
-        alertOpen = true;
-      }
-    }
-  }
-
-  void _showWifiAlert() {
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) => PopScope(
-        canPop: false,
-        child: AlertDialog(
-          title: const Text('İnternet Bağlantısı Gerekli'),
-          content: const Row(
-            children: [
-              Expanded(
-                flex: 3,
-                child: SizedBox(
-                  height: 100,
-                  child: Column(
-                    children: [
-                      Text("Devam etmek için lütfen Wi-Fi'yi yada Mobil Veri'yi etkinleştirin."),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text('Servisler internet olmadan düzgün çalışmayacaktır.'),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Icon(
-                  Icons.wifi_off,
-                  size: 45,
-                ),
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Tekrar Dene'),
-              onPressed: () {
-                Navigator.pop(context);
-                alertOpen = false;
-                _checkWifi();
-                Navigator.pop(context);
-                Navigator.of(context).pushNamed('/');
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

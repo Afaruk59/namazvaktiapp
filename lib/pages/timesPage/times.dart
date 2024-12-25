@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:namaz_vakti_app/pages/timesPage/detailed_times.dart';
@@ -35,6 +36,69 @@ class _TimesBodyState extends State<TimesBody> {
   String hicri = '';
   int count = 0;
   DateTime customDate = DateTime.now();
+  static bool alertOpen = false;
+
+  void _checkWifi() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      if (alertOpen == false) {
+        _showWifiAlert();
+        alertOpen = true;
+      }
+    } else {
+      Provider.of<TimeData>(context, listen: false).switchClock(true);
+      Provider.of<TimeData>(context, listen: false).loadPrayerTimes(DateTime.now());
+    }
+  }
+
+  void _showWifiAlert() {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => PopScope(
+        canPop: false,
+        child: AlertDialog(
+          title: const Text('İnternet Bağlantısı Gerekli'),
+          content: const Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: SizedBox(
+                  height: 100,
+                  child: Column(
+                    children: [
+                      Text("Devam etmek için lütfen Wi-Fi'yi yada Mobil Veri'yi etkinleştirin."),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text('Servisler internet olmadan düzgün çalışmayacaktır.'),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Icon(
+                  Icons.wifi_off,
+                  size: 45,
+                ),
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Tekrar Dene'),
+              onPressed: () {
+                Navigator.pop(context);
+                alertOpen = false;
+                _checkWifi();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
 //DATE PICKER İLE İSTENİLEN TARİHİ SEÇME
   Future<void> _selectDate(BuildContext context) async {
@@ -56,8 +120,10 @@ class _TimesBodyState extends State<TimesBody> {
   @override
   void initState() {
     super.initState();
-    miladi = DateFormat('dd MMMM yyyy', 'tr').format(DateTime.now());
-    hicri = HijriCalendar.fromDate(DateTime.now()).toFormat('dd MMMM yy');
+    _checkWifi();
+    miladi = DateFormat('dd MMMM yyyy', 'tr').format(DateTime.now().add(Duration(days: count)));
+    hicri = HijriCalendar.fromDate(DateTime.now().add(Duration(days: count + 1)))
+        .toFormat('dd MMMM yy');
     Provider.of<TimeData>(context, listen: false).changeTime(miladi);
   }
 
@@ -334,14 +400,6 @@ class PrayerTimesPage extends StatefulWidget {
 }
 
 class PrayerTimesPageState extends State<PrayerTimesPage> {
-  @override
-  void initState() {
-    super.initState();
-
-    Provider.of<TimeData>(context, listen: false).switchClock(true);
-    Provider.of<TimeData>(context, listen: false).loadPrayerTimes(DateTime.now());
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
